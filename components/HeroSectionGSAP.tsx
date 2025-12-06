@@ -254,14 +254,14 @@ export default function HeroSectionGSAP() {
         <div className="mb-6 relative">
           <SplitText 
             text="NinjaFix" 
-            className="text-5xl md:text-7xl lg:text-8xl font-bold gradient-text block mb-4"
+            className="text-5xl md:text-7xl lg:text-8xl font-bold text-white block mb-4 tracking-tight"
             delay={0.5}
             stagger={0.05}
           />
           
           {/* Le Développeur with 3D perspective */}
           <div className="relative overflow-hidden mb-4" style={{ perspective: '1000px' }}>
-            <div ref={titleRef} className="text-5xl md:text-7xl lg:text-8xl font-bold text-white block whitespace-nowrap">
+            <div ref={titleRef} className="text-4xl md:text-6xl lg:text-7xl font-bold text-white block whitespace-nowrap">
               {'Le Développeur'.split('').map((char, i) => (
                 <span
                   key={i}
@@ -279,7 +279,7 @@ export default function HeroSectionGSAP() {
           
           {/* d'Urgence with glitch effect */}
           <div className="relative">
-            <div ref={urgenceRef} className="text-5xl md:text-7xl lg:text-8xl font-bold text-white block relative">
+            <div ref={urgenceRef} className="text-4xl md:text-6xl lg:text-7xl font-bold text-white block relative">
               {'d\'Urgence'.split('').map((char, i) => (
                 <span
                   key={i}

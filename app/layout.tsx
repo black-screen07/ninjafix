@@ -8,6 +8,12 @@ export const metadata: Metadata = {
   title: 'NinjaFix – Le Développeur d\'Urgence | Micro-prestations Dev Express',
   description: 'Micro-prestations de développement livrées en quelques heures : corrections de bugs, intégrations API, landing pages, automatisations. Rapide. Précis. Invisible.',
   keywords: 'développeur freelance, correction bugs, intégration API, landing page, automatisation, développement express',
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 1,
+    userScalable: false,
+  },
 }
 
 export default function RootLayout({
@@ -17,9 +23,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="fr">
-      <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-      </head>
       <body className={inter.className}>{children}</body>
     </html>
   )

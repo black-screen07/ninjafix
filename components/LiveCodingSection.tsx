@@ -66,7 +66,7 @@ export default function LiveCodingSection() {
             </div>
 
             {/* Code editor */}
-            <div className="p-8 font-mono text-sm min-h-[300px]">
+            <div className="p-8 font-mono text-sm h-[450px] overflow-y-auto">
               <div className="space-y-2">
                 {codeLines.map((line, index) => (
                   <motion.div
