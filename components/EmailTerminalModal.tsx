@@ -52,10 +52,14 @@ export default function EmailTerminalModal({ isOpen, onClose }: EmailTerminalMod
 
     setIsTyping(true)
     
+    // Open email client IMMEDIATELY to avoid popup blocker
+    const mailtoUrl = `mailto:akaemmanuelfreddy@gmail.com?subject=Contact depuis NinjaFix&body=${encodeURIComponent(message)}`
+    window.location.href = mailtoUrl
+    
     // Add user message to terminal
     setLines(prev => [...prev, `$ ${message}`])
     
-    // Simulate realistic processing with more steps
+    // Simulate realistic processing
     setTimeout(() => {
       setLines(prev => [...prev, '> Analyse du message...'])
       
@@ -63,60 +67,32 @@ export default function EmailTerminalModal({ isOpen, onClose }: EmailTerminalMod
         setLines(prev => [...prev, '✓ Message validé'])
         
         setTimeout(() => {
-          setLines(prev => [...prev, '> Chiffrement des données...'])
+          setLines(prev => [...prev, '> Ouverture du client email...'])
           
           setTimeout(() => {
-            setLines(prev => [...prev, '✓ Données sécurisées'])
+            setLines(prev => [...prev, '✓ Client email ouvert', '', '📧 Message prêt à envoyer!', '> Fermeture du terminal dans 2 secondes...'])
             
             setTimeout(() => {
-              setLines(prev => [...prev, '> Préparation du client email...'])
-              
+              onClose()
+              // Reset after close
               setTimeout(() => {
-                setLines(prev => [...prev, '✓ Client email prêt'])
-                
-                setTimeout(() => {
-                  setLines(prev => [...prev, '> Formatage du message...'])
-                  
-                  setTimeout(() => {
-                    setLines(prev => [...prev, '✓ Message formaté'])
-                    
-                    setTimeout(() => {
-                      setLines(prev => [...prev, '> Ouverture du client email...'])
-                      
-                      // Open email client with message
-                      setTimeout(() => {
-                        const mailtoUrl = `mailto:akaemmanuelfreddy@gmail.com?subject=Contact depuis NinjaFix&body=${encodeURIComponent(message)}`
-                        window.location.href = mailtoUrl
-                        
-                        setLines(prev => [...prev, '✓ Client email ouvert', '', '📧 Message prêt à envoyer!', '> Fermeture du terminal dans 3 secondes...'])
-                        
-                        setTimeout(() => {
-                          onClose()
-                          // Reset after close
-                          setTimeout(() => {
-                            setLines([
-                              '$ ninjafix --email-contact',
-                              '> Initialisation du terminal email...',
-                              '> Connexion établie ✓',
-                              '',
-                              '> Tapez votre message ci-dessous et appuyez sur Entrée',
-                              '> Votre message sera envoyé directement par email',
-                              ''
-                            ])
-                            setMessage('')
-                            setIsTyping(false)
-                          }, 300)
-                        }, 3000)
-                      }, 800)
-                    }, 600)
-                  }, 500)
-                }, 600)
-              }, 700)
-            }, 600)
-          }, 700)
+                setLines([
+                  '$ ninjafix --email-contact',
+                  '> Initialisation du terminal email...',
+                  '> Connexion établie ✓',
+                  '',
+                  '> Tapez votre message ci-dessous et appuyez sur Entrée',
+                  '> Votre message sera envoyé directement par email',
+                  ''
+                ])
+                setMessage('')
+                setIsTyping(false)
+              }, 300)
+            }, 2000)
+          }, 500)
         }, 500)
-      }, 600)
-    }, 500)
+      }, 500)
+    }, 300)
   }
 
   const handleKeyPress = (e: React.KeyboardEvent) => {

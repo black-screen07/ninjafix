@@ -53,6 +53,10 @@ export default function WhatsAppTerminalModal({ isOpen, onClose }: WhatsAppTermi
 
     setIsTyping(true)
     
+    // Open WhatsApp IMMEDIATELY to avoid popup blocker
+    const whatsappUrl = `https://wa.me/2250767665462?text=${encodeURIComponent(message)}`
+    window.open(whatsappUrl, '_blank')
+    
     // Add user message to terminal
     setLines(prev => [...prev, `$ ${message}`])
     
@@ -64,64 +68,32 @@ export default function WhatsAppTerminalModal({ isOpen, onClose }: WhatsAppTermi
         setLines(prev => [...prev, '✓ Message validé'])
         
         setTimeout(() => {
-          setLines(prev => [...prev, '> Chiffrement des données...'])
+          setLines(prev => [...prev, '> Ouverture de WhatsApp...'])
           
           setTimeout(() => {
-            setLines(prev => [...prev, '✓ Données sécurisées'])
+            setLines(prev => [...prev, '✓ Redirection effectuée', '', '🚀 Message envoyé avec succès!', '> Fermeture du terminal dans 2 secondes...'])
             
             setTimeout(() => {
-              setLines(prev => [...prev, '> Connexion au serveur WhatsApp...'])
-              
+              onClose()
+              // Reset after close
               setTimeout(() => {
-                setLines(prev => [...prev, '✓ Connexion établie'])
-                
-                setTimeout(() => {
-                  setLines(prev => [...prev, '> Préparation de l\'envoi...'])
-                  
-                  setTimeout(() => {
-                    setLines(prev => [...prev, '> Formatage du message...'])
-                    
-                    setTimeout(() => {
-                      setLines(prev => [...prev, '✓ Message prêt à l\'envoi'])
-                      
-                      setTimeout(() => {
-                        setLines(prev => [...prev, '> Ouverture de WhatsApp...'])
-                        
-                        // Open WhatsApp with message
-                        setTimeout(() => {
-                          const whatsappUrl = `https://wa.me/2250767665462?text=${encodeURIComponent(message)}`
-                          window.open(whatsappUrl, '_blank')
-                          
-                          setLines(prev => [...prev, '✓ Redirection effectuée', '', '🚀 Message envoyé avec succès!', '> Fermeture du terminal dans 3 secondes...'])
-                          
-                          setTimeout(() => {
-                            onClose()
-                            // Reset after close
-                            setTimeout(() => {
-                              setLines([
-                                '$ ninjafix --contact',
-                                '> Initialisation du terminal de contact...',
-                                '> Connexion établie ✓',
-                                '',
-                                '> Tapez votre message ci-dessous et appuyez sur Entrée',
-                                '> Votre message sera envoyé directement via WhatsApp',
-                                ''
-                              ])
-                              setMessage('')
-                              setIsTyping(false)
-                            }, 300)
-                          }, 3000)
-                        }, 800)
-                      }, 600)
-                    }, 500)
-                  }, 600)
-                }, 700)
-              }, 800)
-            }, 600)
-          }, 700)
+                setLines([
+                  '$ ninjafix --contact',
+                  '> Initialisation du terminal de contact...',
+                  '> Connexion établie ✓',
+                  '',
+                  '> Tapez votre message ci-dessous et appuyez sur Entrée',
+                  '> Votre message sera envoyé directement via WhatsApp',
+                  ''
+                ])
+                setMessage('')
+                setIsTyping(false)
+              }, 300)
+            }, 2000)
+          }, 500)
         }, 500)
-      }, 600)
-    }, 500)
+      }, 500)
+    }, 300)
   }
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
