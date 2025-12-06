@@ -146,7 +146,7 @@ Projet personnel - Tous droits réservés
 
 ## 💬 Support
 
-Pour toute question : contact@ninjafix.dev
+Pour toute question : akaemmanuelfreddy@gmail.com | +225 07 67 66 54 62
 
 ---
 

@@ -261,7 +261,7 @@ export default function HeroSectionGSAP() {
           
           {/* Le Développeur with 3D perspective */}
           <div className="relative overflow-hidden mb-4" style={{ perspective: '1000px' }}>
-            <div ref={titleRef} className="text-5xl md:text-7xl lg:text-8xl font-bold text-white block">
+            <div ref={titleRef} className="text-5xl md:text-7xl lg:text-8xl font-bold text-white block whitespace-nowrap">
               {'Le Développeur'.split('').map((char, i) => (
                 <span
                   key={i}

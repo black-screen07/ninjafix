@@ -62,6 +62,7 @@ export default function AboutSection() {
 
       // Content animation
       if (contentRef.current) {
+        gsap.set(contentRef.current.children, { opacity: 1, x: 0 }) // Ensure visible by default
         gsap.from(contentRef.current.children, {
           x: 100,
           opacity: 0,
