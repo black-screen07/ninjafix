@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --ninja-darker: #0a0a0f;
+  --ninja-dark: #12121a;
+  --ninja-blue: #00d4ff;
+  --ninja-purple: #a855f7;
+  --ninja-violet: #8b5cf6;
+  --apple-gray-50: #fafafa;
+  --apple-gray-100: #f5f5f5;
+  --apple-gray-200: #e5e5e5;
+  --apple-gray-300: #d4d4d4;
+  --apple-gray-400: #a3a3a3;
+  --apple-gray-500: #737373;
+  --apple-gray-600: #525252;
+  --apple-gray-700: #404040;
+  --apple-gray-800: #262626;
+  --apple-gray-900: #171717;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+body {
+  @apply bg-ninja-darker text-white font-sans antialiased;
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-ninja-darker;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-ninja-blue/30 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-ninja-blue/50;
+}
+
+/* Custom scrollbar for modal */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  @apply bg-ninja-darker/50;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  @apply bg-ninja-blue/40 rounded-full;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  @apply bg-ninja-blue/60;
+}
+
+/* Glow effects */
+.glow-blue {
+  box-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
+}
+
+.glow-purple {
+  box-shadow: 0 0 30px rgba(168, 85, 247, 0.3);
+}
+
+/* Gradient text */
+.gradient-text {
+  @apply bg-gradient-to-r from-ninja-blue via-ninja-purple to-ninja-violet bg-clip-text text-transparent;
+}
+
+/* Grid background */
+.grid-bg {
+  background-image: 
+    linear-gradient(rgba(0, 212, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 212, 255, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: grid-move 20s linear infinite;
+}
+
+@keyframes grid-move {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 50px 50px;
+  }
+}
+
+/* Slow spin animation */
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
+
+/* Neon border */
+.neon-border {
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
+}
+
+.neon-border:hover {
+  border-color: rgba(0, 212, 255, 0.6);
+  box-shadow: 0 0 30px rgba(0, 212, 255, 0.4);
+}
